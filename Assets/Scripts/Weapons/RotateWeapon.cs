@@ -16,6 +16,5 @@ public class RotateWeapon : MonoBehaviour
         float rotZ = Mathf.Clamp(rot.z + weaponRot.z, -90f, 90f);
         Quaternion rotation = new Quaternion(rotX, rotY, rotZ, weaponRot.w);
         obj.transform.localRotation = rotation;
-        Debug.Log(rotation);
     }
 }
