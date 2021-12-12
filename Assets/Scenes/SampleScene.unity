@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 78909924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 105105842}
   - component: {fileID: 105105846}
   - component: {fileID: 105105847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ MonoBehaviour:
   impact: {fileID: 1327675447}
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
   fireEffect: {fileID: 2103097890}
 --- !u!114 &105105843
 MonoBehaviour:
@@ -811,13 +811,27 @@ GameObject:
   - component: {fileID: 940848462}
   - component: {fileID: 940848466}
   - component: {fileID: 940848467}
-  m_Layer: 0
+  - component: {fileID: 940848461}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &940848461
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940848460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &940848462
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1236,9 +1250,9 @@ GameObject:
   - component: {fileID: 1582730672}
   - component: {fileID: 1582730676}
   - component: {fileID: 1582730677}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1455,7 +1469,7 @@ GameObject:
   - component: {fileID: 2103097891}
   - component: {fileID: 2103097890}
   - component: {fileID: 2103097889}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireEffet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
