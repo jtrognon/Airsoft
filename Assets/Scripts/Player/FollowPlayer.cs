@@ -8,7 +8,8 @@ public class FollowPlayer : MonoBehaviour
 
     [SerializeField] private GameObject player;
     [SerializeField] private Vector3 offset = new Vector3(5, 0, 0);
-    [SerializeField] float rotationSpeed = 15f;
+    [SerializeField] float rotationSpeedB = 15f;
+    private float rotationSpeed;
 
     float xRotation = 0f;
 
@@ -25,6 +26,8 @@ public class FollowPlayer : MonoBehaviour
     void Start(){
         //Lock the cursor (make the cursor disappear)
         Cursor.lockState = CursorLockMode.Locked;
+        playerActionControls.Player.Zoom.performed += _ => Zoom();
+        rotationSpeed = rotationSpeedB;
     }
 
 
@@ -38,6 +41,8 @@ public class FollowPlayer : MonoBehaviour
         playerActionControls.Disable();
     }
     //--------------------------------------------
+
+    public GameObject weapon;
 
     // Update is called once per frame
     void Update()
@@ -59,4 +64,27 @@ public class FollowPlayer : MonoBehaviour
         weaponRotation = transform.localRotation;
     }
     
+    [SerializeField] private Animator animator;
+    private bool isScoped = false;
+    [SerializeField] private GameObject crossAir;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private float scopedFOV = 15f;
+    private float normalFOV;
+
+    private void Zoom(){
+        isScoped = ! isScoped;
+        animator.SetBool("isScoped", isScoped);
+        if (isScoped){
+            crossAir.SetActive(false);
+
+            normalFOV = mainCamera.fieldOfView;
+            mainCamera.fieldOfView = scopedFOV;
+            rotationSpeed = 12f;
+        }
+        else{
+            crossAir.SetActive(true);
+            mainCamera.fieldOfView = normalFOV;
+            rotationSpeed = rotationSpeedB;
+        }
+    }
 }

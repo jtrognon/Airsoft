@@ -78,18 +78,17 @@ public class GridClass : MonoBehaviour
         return grid[x, y]; //return the cell
     }
 
-
     public List<Node> path;
     private void OnDrawGizmos() {
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y)); //draw the unwakable layerMask area
+        //Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y)); //draw the unwakable layerMask area
         if (grid != null){
             foreach (Node n in grid)
             {
-                Gizmos.color = (n.walkable)?Color.white:Color.red; //color = red if unwalkable else color = white if walkable
+                //Gizmos.color = (n.walkable)?Color.white:Color.red; //color = red if unwalkable else color = white if walkable
                 if (path != null)
                     if (path.Contains(n))
                         Gizmos.color = Color.black;
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter)); //draw cell
+                //Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter)); //draw cell
             }
         }
     }

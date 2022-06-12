@@ -9,6 +9,7 @@ public class PlayerBehavior : MonoBehaviour
 
 	//player controller
 	[SerializeField] private CharacterController controller;
+	[SerializeField] private GameObject weapon;
 
 	//Movement
 	[SerializeField] private float normalSpeed = 8f;
@@ -84,11 +85,9 @@ public class PlayerBehavior : MonoBehaviour
 		// Read the movement values
         Vector2 movement = playerActionControls.Player.Move.ReadValue<Vector2>();
 
-    	//Move the vehicle forward
-        Vector3 currentPosition = transform.position;
-
         //create a vector3 to move the player
 		Vector3 move = transform.right * movement.x + transform.forward * movement.y;
+		Vector3 moveWeapon = weapon.transform.right * movement.x + weapon.transform.forward * movement.y;
 
 		//move the player using the Vector3 move
 		controller.Move(move * Time.deltaTime * speed);
@@ -97,6 +96,7 @@ public class PlayerBehavior : MonoBehaviour
 		velocity.y += gravity * Time.deltaTime;
 
 		controller.Move(velocity * Time.deltaTime);
+		weapon.transform.position = moveWeapon * Time.deltaTime * speed * Time.deltaTime;
 
 		//---------------------------------------------------------------------------------------------
   	}
